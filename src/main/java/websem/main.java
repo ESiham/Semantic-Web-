@@ -1,3 +1,4 @@
+//cette classe sert a inserer des triplets afin de construire un historique
 package websem;
 
 import java.io.BufferedReader;
