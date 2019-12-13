@@ -1,3 +1,4 @@
+//cette classe est pour creer le Model RDF de notre projet
 package websem;
 
 
@@ -84,7 +85,7 @@ public class BuiltRDF {
   for(int i = 0 ; i < list.size(); i++) {
 	  
         try {	
-        	// créer un objet JSONArray pour accéder aux differents elements du fichier JSON des stations
+        	// crÃ©er un objet JSONArray pour accÃ©der aux differents elements du fichier JSON des stations
 			JSONArray jsonObjects= readJsonFromUrl("https://api.jcdecaux.com/vls/v1/stations?contract="+list.get(i)+"&apiKey=345d6d791a9f6a8152fcf679657486e851cb0a95");
 	    
  for (Object obj: jsonObjects) {
@@ -101,7 +102,7 @@ public class BuiltRDF {
                Double lat = (Double) position.get("lat");
    	           Double lng = (Double) position.get("lng"); 
    	           Integer stands=(Integer) jsonObjec.get("bike_stands");
-   // commencer d'écrire les URL des triplets
+   // commencer d'Ã©crire les URL des triplets
                String ville ="http://ville.org"; // definir une ville
                String indice ="http://"+list.get(i)+".org/";
                String station="http://station_"+number+"_"+Inville+".org/";
@@ -131,7 +132,7 @@ public class BuiltRDF {
    				Property Has_weather = model.createProperty(ns,has_weather);
    					
    			
-     //définir les proprietes du Model
+     //dÃ©finir les proprietes du Model
       		   Property Contain=model.createProperty(ns,contains);
       		   Property GPS=model.createProperty(ns,gps);
       		   Property HasName = model.createProperty(ns, stationName);
@@ -144,7 +145,7 @@ public class BuiltRDF {
      		   Property IN_city= model.createProperty(ns,IN);
      		   Property Has_adress = model.createProperty(ns,has_adress);
      		   Property Has_stands= model.createProperty(ns,has_stands);
-   // définir les ressources du model et ajouter pour chaque ressource ces proprietes
+   // dÃ©finir les ressources du model et ajouter pour chaque ressource ces proprietes
               Resource city = model.createResource(indice).addProperty(RDF.type, ville);	
               Resource Station = model.createResource(station).addProperty(RDF.type, STATION)
             	      .addProperty(HasName, name.toString())
